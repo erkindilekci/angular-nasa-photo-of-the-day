@@ -1,0 +1,15 @@
+<div class="element-shadow" id="nasa-pod">
+    <nasa-pod-header (click)="externalClick()"></nasa-pod-header>
+    <main>
+        <div
+                (click)="externalClick()"
+                (outputData)="searchResults($event)"
+                class="column-data"
+                nasa-photo-body
+        >
+            <div class="photo"></div>
+            <p>Photo description ...</p>
+        </div>
+        <div class="column-search" nasa-search></div>
+    </main>
+</div>

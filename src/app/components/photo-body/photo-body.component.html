@@ -1,0 +1,17 @@
+<div class="photo-body">
+    <button (click)="showText()" type="text">
+        {{ fullExplanation && !datePickerStatus ? "Hide " : "Show " }}Details
+    </button>
+    <div
+            (click)="closeCalendar()"
+            *ngIf="mediaType! === 'image'"
+            [ngStyle]="{ 'background-image': getUrl() }"
+            class="hd-url"
+    ></div>
+    <div *ngIf="mediaType! === 'video'" class="video-wrapper">
+        <youtube-player videoId="{{ videoURL }}"></youtube-player>
+    </div>
+    <div *ngIf="fullExplanation && !datePickerStatus" class="explanation">
+        {{ explanation }}
+    </div>
+</div>

@@ -1,0 +1,57 @@
+<div (window:resize)="onResize($event)" id="calendar-component">
+    <input
+            (focus)="openCalendar()"
+            [ngClass]="{
+      'future-date': selectedDate > currentDate && currentDate != ''
+    }"
+            placeholder="Select a date..."
+            type="text"
+            value="{{ getValue() }}"
+    />
+    <div *ngIf="calendarVisible" class="calendar element-shadow">
+        <nav>
+            <div (click)="closeCalendar()" class="close-calendar">
+                <span>&#x2715;</span>
+            </div>
+            <div (click)="showMonths()" class="month">
+                <span>{{ months[monthIndex] }}</span>
+                <ul *ngIf="monthsMenu">
+                    <li
+                            (click)="selectMonth(i)"
+                            *ngFor="let month of months; let i = index"
+                    >
+                        {{ month }}
+                    </li>
+                </ul>
+            </div>
+            <div (click)="showYears()" class="year">
+                <span>{{ year }}</span>
+                <ul *ngIf="yearsMenu">
+                    <li
+                            (click)="selectYear(year)"
+                            *ngFor="let year of years; let i = index"
+                    >
+                        {{ year }}
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="weekdays">
+            <ul>
+                <li *ngFor="let day of weekdays">{{ day }}</li>
+            </ul>
+        </div>
+        <div class="all-days-skeleton">
+            <div
+                    (click)="selectDay(day)"
+                    *ngFor="let day of daySpan; let i = index"
+                    [ngClass]="{
+          'has-value': day.value != null,
+          'current-date': day.value === currentDay
+        }"
+            >
+                <div class="day-value">{{ day.value }}</div>
+            </div>
+        </div>
+    </div>
+</div>

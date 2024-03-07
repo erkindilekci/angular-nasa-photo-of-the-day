@@ -1,0 +1,23 @@
+@import "../../styles/page-style";
+
+header {
+    background-color: $greyBlack;
+    color: $yellowGold;
+    font: normal 0.9em sans-serif;
+    padding: 10px 20px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: auto;
+
+    p {
+        margin: 0;
+    }
+
+    p:first-child {
+        float: left;
+    }
+
+    p:last-child {
+        float: right;
+    }
+}
